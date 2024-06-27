@@ -1,0 +1,35 @@
+/* DataVisualization.css */
+
+.data-visualization {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.chart-container {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.loading {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    padding: 20px;
+}
+
+.error {
+    text-align: center;
+    font-size: 18px;
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 20px;
+}

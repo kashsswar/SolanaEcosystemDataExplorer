@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Line } from 'react-chartjs-2';
+import './Datavisualisation.css'
 
 const DataVisualization = () => {
     const [chartData, setChartData] = useState({});
@@ -10,15 +11,15 @@ const DataVisualization = () => {
     useEffect(() => {
         const fetchChartData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/data');
+                const response = await axios.get('http://localhost:5000/api/fetch?id=ID-1'); // Replace with actual profile ID
                 const data = response.data;
-                if (data && Array.isArray(data)) {
+                if (data) {
                     const formattedData = {
-                        labels: data.map(d => d.date),
+                        labels: data.labels, // Assuming labels are fetched from response data
                         datasets: [
                             {
                                 label: 'Value',
-                                data: data.map(d => d.value),
+                                data: data.values, // Assuming data points are fetched from response data
                                 borderColor: 'rgba(75, 192, 192, 1)',
                                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                             }
@@ -39,17 +40,19 @@ const DataVisualization = () => {
     }, []);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className="loading">Loading...</div>;
     }
 
     if (error) {
-        return <div>Error: {error}</div>;
+        return <div className="error">Error: {error}</div>;
     }
 
     return (
-        <div>
+        <div className="data-visualization">
             <h2>Data Visualization</h2>
-            <Line data={chartData} />
+            <div className="chart-container">
+                <Line data={chartData} />
+            </div>
         </div>
     );
 };
